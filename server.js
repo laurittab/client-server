@@ -10,7 +10,8 @@ var app = express();
 //Set application to use middleware
 app.use(cors({
   origin: [
-    "https://stock-tracker-web-app-frontend.vercel.app", 
+    "http://localhost:3000", 
+    "https://medical-treatments-86kyao796-laurittabs-projects.vercel.app/", 
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   //credentials: true,
