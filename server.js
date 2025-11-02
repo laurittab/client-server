@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //The server port
-var HTTP_PORT = process.env.WEBSITES_PORT || 8080;
+var HTTP_PORT = process.env.PORT || 8080;
 
 //To start server
 app.listen(HTTP_PORT, '0.0.0.0', () => {
@@ -28,8 +28,8 @@ app.listen(HTTP_PORT, '0.0.0.0', () => {
 });
 
 //The root endpoint
-app.get("/", (req, res, next) => {
-  res.json({ "message": "Ok - Medical Records Server" });
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Ok - Medical Records Server" });
 });
 
 //Close the database
