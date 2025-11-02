@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //The server port
-var HTTP_PORT = 3000;
+var HTTP_PORT = process.env.PORT || 3000;
 
 //To start server
 app.listen(HTTP_PORT, () => {
