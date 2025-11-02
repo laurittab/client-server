@@ -29,7 +29,7 @@ app.listen(HTTP_PORT, () => {
 
 //The root endpoint
 app.get("/", (req, res, next) => {
-  res.json({ "message": "Ok - LHM" });
+  res.json({ "message": "Ok - Medical Records Server" });
 });
 
 //Close the database
