@@ -1,7 +1,7 @@
 {
   "name": "client-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend server for fetching client records",
   "main": "server.js",
   "scripts": {
     "build": "echo 'No build step needed for Express app'",
