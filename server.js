@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 var HTTP_PORT = process.env.PORT || 8080;
 
 //To start server
-app.listen(HTTP_PORT, () => {
+app.listen(HTTP_PORT, '0.0.0.0', () => {
   console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT));
 });
 
