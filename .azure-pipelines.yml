@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  appName: 'lauritta-burrows-client-records-sqlite3-server-1762085667'
+  appName: 'lb-client-records-sqlite3-server-1762085667'
   azureSubscription: 'azure-connection'
   packageDir: '$(System.DefaultWorkingDirectory)'
   NODE_ENV: production
