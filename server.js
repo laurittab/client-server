@@ -11,7 +11,7 @@ var app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000", 
-    "https://medical-treatments.vercel.app/", 
+    "https://medical-treatments.vercel.app", 
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   //credentials: true,
