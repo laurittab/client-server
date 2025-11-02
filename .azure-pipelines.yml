@@ -1,0 +1,42 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  appName: 'lauritta-burrows-client-records-sqlite3-server-1762085667'
+  azureSubscription: 'azure-connection'
+  packageDir: '$(System.DefaultWorkingDirectory)'
+  NODE_ENV: production
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSource: 'fromFile'
+      versionFilePath: '.nvmrc'
+    displayName: 'Install Node.js from .nvmrc'
+
+  - script: |
+      npm ci --omit=dev
+      npm run build
+    displayName: 'Install dependencies and build'
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(packageDir)'
+      includeRootFolder: false
+      archiveType: zip
+      archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+      replaceExistingArchive: true
+    displayName: 'Archive build'
+
+  - task: AzureWebApp@1    
+    inputs:      
+      azureSubscription: '$(azureSubscription)'      
+      appName: '$(appName)'      
+      package: '$(Build.ArtifactStagingDirectory)/app.zip'
+      displayName: 'Deploy to Azure Web App'
+
