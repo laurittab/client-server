@@ -40,3 +40,15 @@ steps:
       package: '$(Build.ArtifactStagingDirectory)/app.zip'
       displayName: 'Deploy to Azure Web App'
 
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: '$(azureSubscription)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az webapp config appsettings set \
+          --resource-group rg-portfolio \
+          --name $(appName) \
+          --settings WEBSITES_PORT=8080 NODE_ENV=production
+    displayName: 'Set app environment variables'
+
